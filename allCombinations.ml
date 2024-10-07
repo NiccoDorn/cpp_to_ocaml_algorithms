@@ -51,9 +51,9 @@ let test = len(allCombs 6 3) = 20;;
 (* 6*5*4 / 3*2*1 = 120 / 6 = 20 => Correct! *)
 (* for k = 1 to k = n, the total amount of computed sublists for COMBINATIONS
 (not permutations!) will be 2^n *)
-let countSubs n = if n < 0 then 0 else
+let countCombs n = if n < 0 then 0 else
     let rec countSubs' k amount = match (n-k) with
       | -1 -> amount
       | _ -> countSubs' (k+1) (amount+ len(allCombs n k))
     in countSubs' 0 0;;
-let test = (countSubs 5) = 32;; (* 2^5 = 32 => Correct! *)
+let test = (countCombs 5) = 32;; (* 2^5 = 32 => Correct! *)
