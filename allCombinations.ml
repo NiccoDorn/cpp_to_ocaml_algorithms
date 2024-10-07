@@ -1,4 +1,4 @@
-(* All combinations of n numbers in k-element lists *)
+(* All combinations of [1,n] in k-sized lists *)
 
 (* type scheme: int -> int -> int list list *) 
 (* approach: create list of elements from n, thenn compute all sublists
