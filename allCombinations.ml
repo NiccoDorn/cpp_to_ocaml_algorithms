@@ -9,7 +9,7 @@ let  len l =
     | h::t -> len' t (c+1)
   in len' l 0;; 
 
-let create n =
+let create n = if n < 1 then [] else
   let rec createl' c acc = match (n-c) with
     | (-1) -> acc
     | _ -> createl' (c+1) (acc @ [c])
