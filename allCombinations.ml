@@ -48,7 +48,7 @@ len (allCombs 7 7);;
 (* Given an arbitrary n & k with validitiy restrictions,
 the number of computed combinations will be n over k. *)
 let test = len(allCombs 6 3) = 20;;
-(* 6*5+4 / 3*2*1 = 120 / 6 = 20 => Correct! *)
+(* 6*5*4 / 3*2*1 = 120 / 6 = 20 => Correct! *)
 (* for k = 1 to k = n, the total amount of computed sublists for COMBINATIONS
 (not permutations!) will be 2^n *)
 let countSubs n = if n < 0 then 0 else
