@@ -54,6 +54,6 @@ let test = len(allCombs 6 3) = 20;;
 let countCombs n = if n < 0 then 0 else
     let rec countCombs' k amount = match (n-k) with
       | -1 -> amount
-      | _ -> countCombs' (k+1) (amount+ len(allCombs n k))
+      | _ -> countCombs' (k+1) (amount + len(allCombs n k))
     in countCombs' 0 0;;
 let test = (countCombs 5) = 32;; (* 2^5 = 32 => Correct! *)
