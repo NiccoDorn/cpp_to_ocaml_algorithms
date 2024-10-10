@@ -4,8 +4,8 @@
    One could potentially split "all subsequences" into three groups: 
    1. all prefix sequences 2. all suffix sequences 3. all (Sub-)Intervals. They overlap.
 
-   Runnning Time complexity: O(2^n), which resembles the amount of computed subsequences in n, 
-   where n is the length of the initial sequence.
+   Runnning Time complexity: O(2^n) for every element in the sequennce, which resembles the amount of computed subsequences in n, 
+   where n is the length of the initial sequence. So, overall running time complexity is O(n * 2^n).
 *)
 
 let length l = 
