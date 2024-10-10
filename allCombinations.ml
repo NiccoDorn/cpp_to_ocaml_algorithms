@@ -11,7 +11,7 @@ let  len l =
 
 let create n = if n < 1 then [] else
   let rec createl' c acc = match (n-c) with
-    | (-1) -> acc
+    | 0 -> acc @ [c]
     | _ -> createl' (c+1) (acc @ [c])
   in createl' 1 [];;
 
