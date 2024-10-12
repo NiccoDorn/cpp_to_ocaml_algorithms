@@ -33,15 +33,17 @@ let backtrack cands target = if target = 1
          else let rec loop idx = match (length cands - idx) with
              | 0 -> []
              | _ -> let curr = nth cands idx in 
-                 if target mod curr = 0 then
+                 if target mod curr = 0 && curr != 1 then
                    let res = backtrack' cands (path @ [curr]) (target/curr) idx in
                    rev_app res (loop (idx+1))
                  else loop (idx+1)
            in loop prev_idx
-    in backtrack' cands [] target 0;; 
-    
-let combination_prod l n = backtrack l n;; 
+    in backtrack' cands [] target 0;;
+
+let combination_prod l n =  if (count l 1) > 0 then add_ones (backtrack l n)
+  else backtrack l n;;
+
 let test1 = (combination_prod [2;3;4] 8) = [[2;2;2]; [4;2]];;
 let test2 = combination_prod [2;3;6;9] 18;;
 let test3 = combination_prod [2;3;4] 1;;
-let test4 = combination_prod [1;1;3;4] 1;;
+let test4 = combination_prod [1;3;4] 4;;
