@@ -7,8 +7,26 @@
    The utility functions from combinationSum are used here.
 *)
 
+let rec count l n =
+  let rec count' l n a = match l with
+    | [] -> a
+    | x::t -> if x = n then count' t n (a+1) else count' t n a
+  in count' l n 0;; 
+
+let add_ones l = 
+  let rec add_ones' l acc = match l with
+    | [] -> acc
+    | x::t -> add_ones' t ((1::x)::acc)
+  in rev (add_ones' l []);;
+
+let ones n =
+  let rec ones' n acc = match n with
+    | 0 -> acc
+    | _ -> ones' (n-1) ([1]::(add_ones acc))
+  in ones' n [];;
+
 let backtrack cands target = if target = 1 
-  then if exists cands 1 then [[1]] else [[]] 
+  then if (count cands 1) > 0 then ones (count cands 1) else [[]] 
   else let rec backtrack' cands path target prev_idx =
          if target = 1 then [rev path]
          else let rec loop idx = match (length cands - idx) with
@@ -25,4 +43,4 @@ let combination_prod l n = backtrack l n;;
 let test1 = (combination_prod [2;3;4] 8) = [[2;2;2]; [4;2]];;
 let test2 = combination_prod [2;3;6;9] 18;;
 let test3 = combination_prod [2;3;4] 1;;
-let test4 = combination_prod [1;3;4] 1;;
+let test4 = combination_prod [1;1;3;4] 1;;
