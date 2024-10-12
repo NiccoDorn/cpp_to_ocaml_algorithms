@@ -3,11 +3,9 @@
    1. The base case for variable target changes from 0 to 1 (l.10)
    2. The check in the second match case needs to check for target mod curr = 0 (l.14)
    3. On recursive backtrack' call, the target needs to be update by div instead of sub (l.15)
-*)
 
-let rec exists l n = match l with
-  | [] -> false
-  | x::t -> x = n || exists t n;;
+   The utility functions from combinationSum are used here.
+*)
 
 let backtrack cands target = if target = 1 
   then if exists cands 1 then [[1]] else [[]] 
