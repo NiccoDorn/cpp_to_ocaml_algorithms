@@ -3,6 +3,7 @@
    1. The base case for variable target changes from 0 to 1 (l.10)
    2. The check in the second match case needs to check for target mod curr = 0 (l.14)
    3. On recursive backtrack' call, the target needs to be update by div instead of sub (l.15)
+   4. Adding functions to realize different combinations of 1-sequences for target=1.
 
    The utility functions from combinationSum are used here.
 *)
