@@ -1,4 +1,4 @@
-(* This problem is  storngly related to the combination sum problem
+(* This problem is strongly related to the combination sum problem
    Thus, it suffices to have some adjustments in the combinationSum backtrack function.
    1. The base case for initial target changes from 0 to 1 (l.10)
    2. The check in the second match case needs to check for target mod curr = 0 (l.14)
