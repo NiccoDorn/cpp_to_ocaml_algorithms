@@ -26,24 +26,29 @@ let nth l n = if n > length l || n < 0 then failwith "Bad index" else
       | x::t, _ -> atIndex' t (n-1)
     in atIndex' l n;;
 
+let rec exists l n = match l with
+    | [] -> false
+    | x::t -> x = n || exists t n;;
+
 (* 1. In python main, function backtrack called with 5 initial argument: 
    sequence: int list | path: 'a list | answer: 'a list | target: int | index: int
    basically: call to "in backtrack [...] [] [] n 0" after definition.
    => answer argument is actually redudant for OCaml implementation & can be computed inplace
 *)
 
-let backtrack cands target =
-  let rec backtrack' cands path target prev_idx =
-    if target = 0 then [rev path]
-    else let rec loop idx = match (length cands - idx) with
-        | 0 -> []
-        | _ -> let curr = nth cands idx in 
-            if target >= curr then
-              let res = backtrack' cands (path @ [curr]) (target-curr) idx in
-              rev_app res (loop (idx+1))
-            else loop (idx+1)
-      in loop prev_idx
-  in backtrack' cands [] target 0
+let backtrack cands target = if target = 1 
+  then if exists cands 1 then [[1]] else [[]]
+  else let rec backtrack' cands path target prev_idx =
+         if target = 0 then [rev path]
+         else let rec loop idx = match (length cands - idx) with
+             | 0 -> []
+             | _ -> let curr = nth cands idx in 
+                 if target >= curr then
+                   let res = backtrack' cands (path @ [curr]) (target-curr) idx in
+                   rev_app res (loop (idx+1))
+                 else loop (idx+1)
+           in loop prev_idx
+    in backtrack' cands [] target 0
     
 let combination_sum l n = backtrack l n;;
 
