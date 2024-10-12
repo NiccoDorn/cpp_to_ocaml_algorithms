@@ -32,7 +32,7 @@ let nth l n = if n > length l || n < 0 then failwith "Bad index" else
    => answer argument is actually redudant for OCaml implementation & can be computed inplace
 *)
 
-let backtrack cands path target prev_idx =
+let backtrack cands target =
   let rec backtrack' cands path target prev_idx =
     if target = 0 then [rev path]
     else let rec loop idx = match (length cands - idx) with
@@ -43,9 +43,9 @@ let backtrack cands path target prev_idx =
               rev_app res (loop (idx+1))
             else loop (idx+1)
       in loop prev_idx
-  in backtrack' cands path target prev_idx 
+  in backtrack' cands [] target 0
     
-let combination_sum l n = backtrack l [] n 0;;
+let combination_sum l n = backtrack l n;;
 
 let test1 = (combination_sum [2;3;5] 8) = [[2;2;2;2]; [3;3;2]; [5;3]];;
 let test2 = (combination_sum [2;3;6;7] 7);;
