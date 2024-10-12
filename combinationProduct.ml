@@ -1,15 +1,14 @@
 (* This problem is  storngly related to the combination sum problem
    Thus, it suffices to have some adjustments in the combinationSum backtrack function.
-   1. Base Case needs to be adjusted to 1 instead of 0 in the pattern match
-   2. On recursive backtrack' call, the target needs to be update by div instead of sub
-   3. The check in the second match case needs to check for target mod curr = 0
+   1. On recursive backtrack' call, the target needs to be update by div instead of sub
+   2. The check in the second match case needs to check for target mod curr = 0
 *)
 
 let backtrack cands path target prev_idx =
   let rec backtrack' cands path target prev_idx =
     if target = 0 then [rev path]
     else let rec loop idx = match (length cands - idx) with
-        | 1 -> []
+        | 0 -> []
         | _ -> let curr = nth cands idx in 
             if target mod curr = 0 then
               let res = backtrack' cands (path @ [curr]) (target/curr) idx in
