@@ -26,19 +26,10 @@ let nth l n = if n > length l || n < 0 then failwith "Bad index" else
       | x::t, _ -> atIndex' t (n-1)
     in atIndex' l n;;
 
-nth[2;3;2;5;8;6;7;3;2] 4;;
-
-(* 1. In python main: backtrack function takes 5 initial argument: 
-   sequence: int list
-   path    : 'a list
-   answer  : 'a list
-   target  : int
-   index   : int
+(* 1. In python main, function backtrack called with 5 initial argument: 
+   sequence: int list | path: 'a list | answer: 'a list | target: int | index: int
    basically: call to "in backtrack [...] [] [] n 0" after definition.
-   returns an int list list with all combinations of the elements that 
-   build the target sum.
-   => answer argument is actually redudant for OCaml implementation,
-      & can be computed inplace
+   => answer argument is actually redudant for OCaml implementation & can be computed inplace
 *)
 
 let backtrack cands path target prev_idx =
