@@ -5,7 +5,7 @@
    3. On recursive backtrack' call, the target needs to be update by div instead of sub (l.15)
 *)
 
-let backtrack cands target = if target = 1 then [[1]] else
+let backtrack cands target =
     let rec backtrack' cands path target prev_idx =
       if target = 1 then [rev path]
       else let rec loop idx = match (length cands - idx) with
