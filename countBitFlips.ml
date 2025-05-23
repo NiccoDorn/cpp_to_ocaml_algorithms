@@ -16,8 +16,6 @@ let checkDiffBit a b = if (a land 1) = (b land 1) then 0 else 1;;
 let countDiffBits a b =
   let rec cnt' a b c = match a, b with
     | 0, 0 -> c
-    | 0, b -> cnt' a (b lsr 1) (c + checkDiffBit a b)
-    | a, 0 -> cnt' (a lsr 1) b (c + checkDiffBit a b)
     | a, b -> cnt' (a lsr 1) (b lsr 1) (c + checkDiffBit a b)
   in cnt' a b 0;;
 
