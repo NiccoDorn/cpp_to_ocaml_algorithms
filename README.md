@@ -1,9 +1,9 @@
-# pyalgo2ocaml
-Translating some of the algorithms from Github Repo https://github.com/TheAlgorithms/Python to OCaml (Practice)
+# Algorithms implemented in C++ Translation to OCaml Functional & Tail-Recursive
+Translating some of the algorithms from Github Repo https://github.com/TheAlgorithms/C-Plus-Plus to OCaml
+Just for pure practice.
 
 Maybe later down the line also tests for the algorithms.
-
-Also trying to be as functional as possible as well as aiming for tail recursion... ...
+Trying to stay functional.
 
 ANYTHING related to reading in files or  managing ressources in general: 
 image/sound/video will not be part of this repo  for the time being.
